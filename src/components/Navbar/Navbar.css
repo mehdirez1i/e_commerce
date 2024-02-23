@@ -1,0 +1,17 @@
+.nav{
+    background: wheat;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0.2rem 1rem;
+}
+
+.nav a{
+    text-decoration: none;
+    margin: 0 1rem;
+
+}
+.nav h2{
+    margin-left: 1rem;
+    margin-right: auto;
+}
