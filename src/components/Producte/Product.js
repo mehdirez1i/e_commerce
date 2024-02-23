@@ -4,10 +4,10 @@ import { shopContext } from '../../context/shopContext'
 
 export default function Product({Product}) {
   const {cartItems, addToCart, removeFromCart} = useContext(shopContext)
-  console.log(cartItems)
+  
   return (
     <div  className="product">
-      {}
+      
       <h4>{Product.title.split(0, 400)}</h4>
         <div className='img-container'>
             <img className='img' src={Product.image} alt="product" />

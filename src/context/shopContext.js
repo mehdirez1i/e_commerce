@@ -14,18 +14,26 @@ export const ShopContextProvider = ({children}) =>{
              return {...item , count : item.count + 1}
             else return item
         }))
-        console.log(cartItems)
+        
     }
     const removeFromCart =(itemId) =>{
-        setCartItems(cartItems.map ((i)=>{
-            if(i.id ===itemId)
-            return {...i , count : i.count ===0 ? 0: i.count - 1}
-            else return i
-        }))
+        const finded = cartItems?.find((item)=> item.id === itemId)
+        console.log(cartItems)
+            if(finded?.count == 1) setCartItems(cartItems.filter(itemFD => itemFD !== finded))
+            
+            else {
+                setCartItems(cartItems.map ((i)=>{
+                    if(i.id ===itemId)
+                    return {...i , count : i.count ===0 ? 0: i.count - 1}
+                    else return i
+                }))
+            }
+        
     }
     const contextValue ={cartItems, addToCart, removeFromCart }
+
     return <shopContext.Provider value={contextValue}>
-        {children}
-    </shopContext.Provider>
+             {children}
+         </shopContext.Provider>
    
 }
