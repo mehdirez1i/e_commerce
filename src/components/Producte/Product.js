@@ -1,26 +1,32 @@
-import React, { useContext } from 'react'
-import './Product.css'
-import { shopContext } from '../../context/shopContext'
+import React, { useContext } from "react";
+import { shopContext } from "../../context/shopContext";
+import "./Product.css";
+import { Link } from "react-router-dom";
 
-export default function Product({Product}) {
-  const {cartItems, addToCart, removeFromCart} = useContext(shopContext)
-  
+export default function Product({ Product }) {
+  const { cartItems, addToCart, removeFromCart } = useContext(shopContext);
+
   return (
-    <div  className="product">
-      
-      <h4>{Product.title.split(0, 400)}</h4>
-        <div className='img-container'>
-            <img className='img' src={Product.image} alt="product" />
-
+    <React.Fragment>
+    {Product && <div className="product">
+      <Link to={"/productdetails/" + Product?.id}>
+        <h4>{Product.title?.split(0, 400)}</h4>
+        <div className="img-container">
+          <img className="img" src={Product.image} alt="product" />
         </div>
         <p> Price: ${Product.price}</p>
-        <div className='btn-buy' >
-          <button onClick={() =>removeFromCart(Product.id)} >-</button>
-          
-          <span> {cartItems?.filter((row) => row.id === Product.id)[0]?.count} </span>
-          <button onClick={() => addToCart(Product.id)} >+</button>
-        </div>
+        </Link>
+        <div className="btn-buy">
+          <button onClick={() => removeFromCart(Product.id)}>-</button>
 
-    </div>
-  )
+          <span>
+            {cartItems?.filter((row) => row.id === Product.id)[0]?.count}{" "}
+          </span>
+          
+          <button onClick={() => addToCart(Product.id)}>+</button>
+        </div>
+      
+    </div>}
+    </React.Fragment>
+  );
 }
