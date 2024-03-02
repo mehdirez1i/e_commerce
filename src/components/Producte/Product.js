@@ -17,13 +17,13 @@ export default function Product({ Product }) {
         <p> Price: ${Product.price}</p>
         </Link>
         <div className="btn-buy">
-          <button onClick={() => removeFromCart(Product.id)}>-</button>
+          <button onClick={() => removeFromCart(Product.id)}><span>- </span> </button>
 
           <span>
             {cartItems?.filter((row) => row.id === Product.id)[0]?.count}{" "}
           </span>
           
-          <button onClick={() => addToCart(Product.id)}>+</button>
+          <button onClick={() => addToCart(Product.id)}><span>+ </span> </button>
         </div>
       
     </div>}

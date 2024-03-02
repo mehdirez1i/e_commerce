@@ -6,6 +6,8 @@ import Cart from './pages/Cart/Cart'
 import Home from "./pages/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Signup from "./pages/Signup/Signup";
+import Signin from "./pages/Signin/Signin";
 function App() {
 
  
@@ -18,6 +20,8 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/products" element={<Prodocts/>} />
             <Route path="/cart" element={<Cart/>} />
+            <Route path="/signup" element={<Signup/>} />
+            <Route path="/signin" element={<Signin/>} />
             <Route path="/productdetails/:id" element={<ProductDetails/>} />
           </Routes>
         </BrowserRouter>
