@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import './Signup.css'; // Import CSS file
+import { useFetch } from '../../hooks/useFetch';
+
 
 function Signup() {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+   
+    
+    const {data, error, postData} = useFetch('http://localhost/practice/signup','POST')
 
     const handleSubmit = (event) => {
         event.preventDefault();
-      
-        console.log({
-            fullName: fullName,
+            postData ({
+            name: fullName,
             email: email,
             phone: phone,
             password: password
         });
-    }
+        console.log(data);
+   }
 
     return (
         <div className="signup-form">

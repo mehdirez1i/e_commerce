@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import './Signin.css'; // Import CSS file
+import { useFetch } from '../../hooks/useFetch';
 
 function Signin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const {data, error, postData} = useFetch('http://localhost/practice/signin','POST')
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Here you can perform form validation and submit data to your backend API
-        console.log({
+        postData ({
             email: email,
             password: password
         });
+        console.log(data);
     }
 
     return (
